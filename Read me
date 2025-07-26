@@ -1,16 +1,39 @@
 city-assistant/
-├── backend/
-│   ├── services/
-│   │   ├── user_service/         # Django: управление пользователями, профили
-│   │   ├── payments_service/     # Django: обработка счетов и платежей
-│   │   ├── news_service/         # FastAPI: быстрая отдача новостей
-│   │   ├── dating_service/       # FastAPI: API для знакомств и чатов
-│   │   └── ml_service/           # FastAPI + ML: сервис для рекомендаций
-│   ├── docker-compose.yml        # Файл для запуска всех сервисов вместе
-│   └── README.md                 # Главное описание проекта
+├── city_assistant_project/  # Django проект
+│   ├── city_assistant_project/
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py      # Главные настройки
+│   │   ├── urls.py          # Главный файл URL
+│   │   └── wsgi.py
+│   ├── apps/
+│   │   ├── __init__.py
+│   │   ├── users/           # Приложение для пользователей
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── models.py
+│   │   │   ├── tests.py
+│   │   │   └── views.py
+│   │   ├── payments/        # Приложение для платежей
+│   │   │   └── ...
+│   │   ├── dating/          # Приложение для знакомств
+│   │   │   └── ...
+│   │   └── news/            # Приложение для новостей
+│   │       └── ...
+│   ├── manage.py
+│   └── requirements.txt
 │
-├── frontend/                     # Папка для фронтенд-приложения (например, на React или Vue)
+├── ml_service/              # FastAPI микросервис
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py          # Основной файл FastAPI
+│   │   └── models/          # Модели ML
+│   │       ├── news_classifier.py
+│   │       └── recommendation_engine.py
+│   ├── Dockerfile
+│   └── requirements.txt
 │
-└── .github/                      # Папки для автоматизации (CI/CD)
-    └── workflows/
-        └── python-app.yml
+├── .gitignore
+├── docker-compose.yml
+└── README.md     

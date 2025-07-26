@@ -1,0 +1,61 @@
+# docker-compose.yml
+# Файл для оркестрации всех сервисов проекта с помощью Docker.
+
+version: '3.8'
+
+services:
+  # Сервис Django бэкенда
+  backend:
+    build: ./city_assistant_project
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./city_assistant_project:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SECRET_KEY=your-secret-key
+      - DEBUG=True
+      - DB_HOST=db
+      - DB_NAME=city_assistant_db
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - ML_SERVICE_URL=http://ml_service:8080
+    depends_on:
+      - db
+
+  # Сервис базы данных PostgreSQL
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=city_assistant_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+
+  # Сервис микросервиса на FastAPI
+  ml_service:
+    build: ./ml_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8080
+    volumes:
+      - ./ml_service:/app
+    ports:
+      - "8080:8080"
+
+  # Сервис фронтенда на React
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Для корректной работы hot-reload в Docker
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

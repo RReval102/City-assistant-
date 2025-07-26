@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import List
 
 # Импортируем наши "модели"
-# В реальном проекте здесь будет загрузка обученных файлов (.h5, .pth, .pkl)
+# В проекте здесь будет загрузка обученных файлов (.h5, .pth, .pkl)
 from .models.news_classifier import classify_news_text
 from .models.recommendation_engine import get_dating_recommendations
 
@@ -59,7 +59,7 @@ def recommend_profiles(profile: DatingProfile):
     user_ids = get_dating_recommendations(profile)
     return {"recommended_user_ids": user_ids}
 
-# В реальном приложении здесь также будет логика для загрузки моделей при старте
+
 # @app.on_event("startup")
 # async def load_models():
 #     ...

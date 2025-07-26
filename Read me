@@ -1,0 +1,16 @@
+city-assistant/
+├── backend/
+│   ├── services/
+│   │   ├── user_service/         # Django: управление пользователями, профили
+│   │   ├── payments_service/     # Django: обработка счетов и платежей
+│   │   ├── news_service/         # FastAPI: быстрая отдача новостей
+│   │   ├── dating_service/       # FastAPI: API для знакомств и чатов
+│   │   └── ml_service/           # FastAPI + ML: сервис для рекомендаций
+│   ├── docker-compose.yml        # Файл для запуска всех сервисов вместе
+│   └── README.md                 # Главное описание проекта
+│
+├── frontend/                     # Папка для фронтенд-приложения (например, на React или Vue)
+│
+└── .github/                      # Папки для автоматизации (CI/CD)
+    └── workflows/
+        └── python-app.yml

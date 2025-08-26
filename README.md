@@ -1,4 +1,5 @@
 # City Assistant — Ваш Умный Помощник в Городе
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://sun9-78.userapi.com/s/v1/ig2/ObmfztR84HGcEoraGHw1hYNHMilyCbdHoOjbQGL0w4l30gMoT7Tp41YRSkIHyyY0g-3bmA1KrLZatRf6QLw8bp1A.jpg?quality=95&as=32x49,48x74,72x111,108x167,160x247,240x371,360x556,480x742,540x835,640x989,720x1113,913x1411&from=bu&cs=913x0)
 ## City Assistant — это кроссплатформенный мобильный ассистент, созданный для упрощения жизни горожан и туристов. Приложение объединяет ключевые городские сервисы в одном интуитивно понятном интерфейсе и использует искусственный интеллект для предоставления персонализированных рекомендаций.
 
 Этот проект является демонстрацией full-stack разработки на Kotlin, включая мобильное приложение для Android и бэкенд на Ktor.
